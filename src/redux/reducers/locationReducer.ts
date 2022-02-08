@@ -1,6 +1,6 @@
 import { Reducer, AnyAction } from "redux";
 
-interface LocationType {
+type LocationType = {
   name: string;
   locationId: string;
   availableProduct: Array<any>;
