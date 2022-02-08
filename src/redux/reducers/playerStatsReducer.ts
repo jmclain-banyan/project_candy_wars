@@ -15,8 +15,8 @@ type PlayerStatsState = {
 const initialState: PlayerStatsState = {
   cash: 100,
   turnsLeft: 31,
-  health: { current: 100, max: 0 },
-  inventorySize: { current: 100, max: 0 },
+  health: { current: 100, max: 100 },
+  inventorySize: { current: 0, max: 25 },
 };
 
 const playerStatsReducer: Reducer = (
