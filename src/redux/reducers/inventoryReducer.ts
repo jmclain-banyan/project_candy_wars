@@ -1,4 +1,3 @@
-import { DispatchAction } from '../store'
 import { Reducer, AnyAction } from 'redux';
 
 type InventoryState = {
