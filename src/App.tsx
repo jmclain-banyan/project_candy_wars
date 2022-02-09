@@ -1,8 +1,11 @@
 import React from "react";
+import PlayerStatsDisplay from "./components/PlayerStatsDisplay";
+import LocationButtons from "./components/LocationButtons";
 
 const App: React.FC = () => (
   <div>
-    <h1>Test</h1>
+    <PlayerStatsDisplay />
+    <LocationButtons />
   </div>
 );
 

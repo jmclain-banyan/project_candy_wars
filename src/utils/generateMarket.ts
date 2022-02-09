@@ -1,7 +1,7 @@
 const range = (min: number, max: number): number =>
   Math.round(Math.random() * (max - min + 1) + min);
 
-type MarketType = {
+export type ProductType = {
     name: string;
     productId: string;
     quantity: number;
@@ -10,7 +10,7 @@ type MarketType = {
     toBeSold: number;
 }
 
-export const generateMarket = (): Array<MarketType> => {
+export const generateMarket = (): Array<ProductType> => {
   const market = [
     {
       name: "Gum Drops",

@@ -1,9 +1,10 @@
 import { Reducer, AnyAction } from "redux";
+import { ProductType } from '../../utils/generateMarket';
 
-type LocationType = {
+export type LocationType = {
   name: string;
   locationId: string;
-  availableProduct: Array<any>;
+  availableProduct: Array<ProductType>;
 };
 
 type LocationState = {

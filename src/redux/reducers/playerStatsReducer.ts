@@ -5,7 +5,7 @@ type HealthAndInventorySizeType = {
   max: number;
 };
 
-type PlayerStatsState = {
+export type PlayerStatsState = {
   cash: number;
   turnsLeft: number;
   health: HealthAndInventorySizeType;
