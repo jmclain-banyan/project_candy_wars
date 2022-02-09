@@ -1,4 +1,5 @@
 import { Reducer, AnyAction } from "redux";
+import { CHANGE_LOCATION } from '../actions/locationActions';
 
 type HealthAndInventorySizeType = {
   current: number;
@@ -24,6 +25,11 @@ const playerStatsReducer: Reducer = (
   { type, payload }: AnyAction
 ): PlayerStatsState => {
   switch (type) {
+    case CHANGE_LOCATION:
+        return {
+            ...state,
+            turnsLeft: state.turnsLeft -= 1,
+        }
     default:
       return state;
   }
