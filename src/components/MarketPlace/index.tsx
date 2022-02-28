@@ -1,12 +1,16 @@
-import React, { MouseEvent } from "react";
+import React, { useState, MouseEvent } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ProductType } from "../../utils/generateMarket";
+import ProductModal from "./ProductModal";
 
 const MarketPlace: React.FC = () => {
   const products: undefined | Array<ProductType> = useSelector(
     ({ location: { current } }: RootState) => current.availableProduct
   );
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [action, setAction] = useState<string>('');
+  const [selected, setSelected] = useState<ProductType | null>(null);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
     const targetValue: string = event.currentTarget.id;
@@ -15,7 +19,9 @@ const MarketPlace: React.FC = () => {
       const targetProduct: ProductType = products.filter(
         (product: ProductType) => product.productId === targetValue
       )[0];
-      console.log(actionType, targetProduct);
+      setIsOpen(true);
+      setAction(actionType);
+      setSelected(targetProduct);
     }
   };
 
@@ -46,6 +52,7 @@ const MarketPlace: React.FC = () => {
             </div>
           </div>
         ))}
+        <ProductModal isOpen={isOpen} setIsOpen={setIsOpen} actionType={action} product={selected} />
     </div>
   );
 };

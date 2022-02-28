@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import { ProductType } from "../../utils/generateMarket";
 
 type ModalProps = {
-    children?: JSX.Element | JSX.Element[];
-    isOpen: boolean;
-}
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  actionType: string;
+  product: ProductType | null;
+};
 
-const ProductModal: React.FC<ModalProps> = ({ children, isOpen }) => {
-    const [show, setShow] = useState<boolean>(isOpen);
+const ProductModal: React.FC<ModalProps> = ({
+  product,
+  isOpen,
+  setIsOpen,
+  actionType,
+}) => {
 
-    const closeModal = (): void => {
-        setShow(false);
-    };
-    
-    useEffect(() => {
-        const handleKeydown = (event: any) => {
-            if (event.target.keyCode === 27) closeModal();
-        }
-        if (show) document.addEventListener('keydown', handleKeydown, false)
-        return () => document.removeEventListener('keydown', handleKeydown, false)
-    }, [show]);
-
-    if (show) {
-        return (
-            <div id="outside" onClick={closeModal}>
-            <div id="inside">
-                <div id='content'>
-                    {children}
-                </div>
-            </div>
+  if (isOpen) {
+    return (
+      <div id="outside" //onClick={() => setIsOpen(false)}
+      >
+        <div id="inside">
+          <div id="content">
+              {`${actionType} ${product?.name}`}
+              <div>
+                  <button>up</button>
+                  <input type="num" />
+                  <button>down</button>
+              </div>
+              <button>{actionType}</button>
+          </div>
         </div>
-    )
-} else {
+      </div>
+    );
+  } else {
     return null;
-}
-}
+  }
+};
 
 export default ProductModal;
