@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { PlayerStatsState } from "../../redux/reducers/playerStatsReducer";
 import { RootState } from "../../redux/store";
+import { HudContainer } from "./style";
 
 const PlayerStatsDisplay: React.FC = () => {
   const { cash, health, inventorySize, turnsLeft }: PlayerStatsState =
@@ -11,13 +12,13 @@ const PlayerStatsDisplay: React.FC = () => {
   );
 
   return (
-    <div>
+    <HudContainer>
       <div>cash: {`$${cash}`}</div>
       <div>health: {`${health.current}/${health.max}`}</div>
       <div>turns left: {turnsLeft}</div>
       <div>inventory: {`${inventorySize.current}/${inventorySize.max}`}</div>
       <div>current location: {currentLocationName}</div>
-    </div>
+    </HudContainer>
   );
 };
 

@@ -1,34 +1,33 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import LocationButton from "./LocationButton";
+import { ButtonsContainer } from "./style";
 import { RootState } from "../../redux/store";
 import { LocationType } from "../../redux/reducers/locationReducer";
 import { changeLocation } from "../../redux/actions/locationActions";
 
-const LocationButtons: React.FC = () => {
+const LocationButtonsLayout: React.FC = () => {
   const locations: Array<LocationType> = useSelector(
     ({ location: { available } }: RootState) => available
   );
 
   const dispatch = useDispatch();
 
-  const handleClick = (event: React.SyntheticEvent, location: LocationType) => {
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    location: LocationType
+  ) => {
     event.preventDefault();
     dispatch(changeLocation(location));
   };
 
   return (
-    <div>
+    <ButtonsContainer>
       {locations.map((location: LocationType, index: number) => (
-        <button
-          key={index}
-          value={location.locationId}
-          onClick={(event) => handleClick(event, location)}
-        >
-          {location.name}
-        </button>
+        <LocationButton key={index} index={index} onClick={handleClick} location={location} />
       ))}
-    </div>
+    </ButtonsContainer>
   );
 };
 
-export default LocationButtons;
+export default LocationButtonsLayout;

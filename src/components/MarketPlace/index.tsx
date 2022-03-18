@@ -1,8 +1,10 @@
 import React, { useState, MouseEvent } from "react";
 import { useSelector } from "react-redux";
+import ProductModal from "./ProductModal";
+import ProductCard from "./ProductCard";
+import { MarketContainer } from "./style";
 import { RootState } from "../../redux/store";
 import { ProductType } from "../../utils/generateMarket";
-import ProductModal from "./ProductModal";
 
 const MarketPlace: React.FC = () => {
   const products: undefined | Array<ProductType> = useSelector(
@@ -26,34 +28,13 @@ const MarketPlace: React.FC = () => {
   };
 
   return (
-    <div>
+    <MarketContainer>
       {products &&
         products.map((product: ProductType, index: number) => (
-          <div
-            key={index}
-            style={{ textAlign: "center", marginBottom: "25px" }}
-          >
-            <span>{`${product.name} = ${product.quantity}`}</span>
-            <div>
-              <span>price </span>
-              <span>$ {product.price}</span>
-            </div>
-            <div>
-              <span>available </span>
-              <span>{product.quantity}</span>
-            </div>
-            <div>
-              <button name="buy" id={product.productId} onClick={handleClick}>
-                buy
-              </button>
-              <button name="sell" id={product.productId} onClick={handleClick}>
-                sell
-              </button>
-            </div>
-          </div>
+          <ProductCard key={index} product={product} onClick={handleClick} />
         ))}
         <ProductModal isOpen={isOpen} setIsOpen={setIsOpen} actionType={action} product={selected} />
-    </div>
+    </MarketContainer>
   );
 };
 
