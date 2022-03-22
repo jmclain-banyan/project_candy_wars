@@ -1,5 +1,6 @@
 import React from "react";
 import { ProductType } from "../../utils/generateMarket";
+import { ModalOutside, ModalInside, ModalContent } from "./style";
 
 type ModalProps = {
   isOpen: boolean;
@@ -11,30 +12,24 @@ type ModalProps = {
 const ProductModal: React.FC<ModalProps> = ({
   product,
   isOpen,
-  setIsOpen,
+  // setIsOpen,
   actionType,
 }) => {
-
-  if (isOpen) {
-    return (
-      <div id="outside" //onClick={() => setIsOpen(false)}
-      >
-        <div id="inside">
-          <div id="content">
-              {`${actionType} ${product?.name}`}
-              <div>
-                  <button>up</button>
-                  <input type="num" />
-                  <button>down</button>
-              </div>
-              <button>{actionType}</button>
+  return isOpen && product ? (
+    <ModalOutside>
+      <ModalInside>
+        <ModalContent>
+          {`${actionType} ${product?.name}`}
+          <div>
+            <button>up</button>
+            <input type="num" />
+            <button>down</button>
           </div>
-        </div>
-      </div>
-    );
-  } else {
-    return null;
-  }
+          <button>{actionType}</button>
+        </ModalContent>
+      </ModalInside>
+    </ModalOutside>
+  ) : null;
 };
 
 export default ProductModal;

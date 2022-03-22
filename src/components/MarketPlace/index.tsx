@@ -15,6 +15,7 @@ const MarketPlace: React.FC = () => {
   const [selected, setSelected] = useState<ProductType | null>(null);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
     const targetValue: string = event.currentTarget.id;
     const actionType: string = event.currentTarget.name;
     if (products) {

@@ -17,7 +17,7 @@ const PlayerStatsDisplay: React.FC = () => {
       <div>health: {`${health.current}/${health.max}`}</div>
       <div>turns left: {turnsLeft}</div>
       <div>inventory: {`${inventorySize.current}/${inventorySize.max}`}</div>
-      <div>current location: {currentLocationName}</div>
+      <div>location: {currentLocationName}</div>
     </HudContainer>
   );
 };
