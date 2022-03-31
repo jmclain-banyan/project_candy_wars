@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductType } from "../../utils/generateMarket";
-import { ModalOutside, ModalInside, ModalContent } from "./style";
+import { ModalOutside, ModalInside, ModalContent, CloseButton } from "./style";
 
 type ModalProps = {
   isOpen: boolean;
@@ -12,12 +12,13 @@ type ModalProps = {
 const ProductModal: React.FC<ModalProps> = ({
   product,
   isOpen,
-  // setIsOpen,
+  setIsOpen,
   actionType,
 }) => {
   return isOpen && product ? (
     <ModalOutside>
       <ModalInside>
+        <CloseButton onClick={() => setIsOpen(false)}>X</CloseButton>
         <ModalContent>
           {`${actionType} ${product?.name}`}
           <div>

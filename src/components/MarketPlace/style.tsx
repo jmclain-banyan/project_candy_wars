@@ -17,8 +17,8 @@ export const CardsContainer = styled.div`
 `;
 
 export const ProductLabel = styled.h1`
-    margin: 10px 0 5px;
-    font-size: 20px;
+  margin: 10px 0 5px;
+  font-size: 20px;
 `;
 
 export const DetailsTextWrapper = styled.div``;
@@ -26,31 +26,37 @@ export const DetailsTextWrapper = styled.div``;
 export const DetailsText = styled.span``;
 
 export const ButtonsContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
 `;
 
 export const CardButton = styled.button`
-    width: 40%;
+  width: 40%;
 `;
 
 export const ModalOutside = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export const ModalInside = styled.div`
-    background: #bbb;
-    padding: 32px;
+  background: transparent;
 `;
 
-export const ModalContent = styled.div``;
+export const ModalContent = styled.div`
+  background: #bbb;
+  padding: 32px;
+`;
+
+export const CloseButton = styled.button`
+    font-size: 32px;
+    font-weight: 600;
+`;
