@@ -34,7 +34,7 @@ const MarketPlace: React.FC = () => {
         products.map((product: ProductType, index: number) => (
           <ProductCard key={index} product={product} onClick={handleClick} />
         ))}
-        <ProductModal isOpen={isOpen} setIsOpen={setIsOpen} actionType={action} product={selected} />
+        {isOpen && <ProductModal setIsOpen={setIsOpen} actionType={action} product={selected} />}
     </MarketContainer>
   );
 };
